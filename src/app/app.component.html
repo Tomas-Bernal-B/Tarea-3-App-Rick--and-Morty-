@@ -1,0 +1,40 @@
+
+<head>
+
+  <title>
+      Tare # 2 TBB Rick and Morty
+  </title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" > <!--Link de boostrap-->
+</head>
+<content>
+<body style="background-color:black"> 
+  <img style="display: block; margin: 0 auto;" src="https://help.redbubble.com/hc/article_attachments/360002309526/Rick_and_Morty_-_logo__English_.png"   width="300" height="100">
+  <img style="display: block; margin: 0 auto;" src="https://i1.wp.com/www.sopitas.com/wp-content/uploads/2019/05/rock-morty-fecha-4-temporada.jpg"   width="300" height="150">
+
+<div style="text-align:center">
+    <h1 class="text-info">
+      Welcome to {{ title }}!
+    </h1>
+    <p class="text-info"> Please, search for your favorite character</p>
+    <div class="container-pages">
+      <ul class="paginator" class="text-success">
+        <li   *ngFor="let page of pages;let i = index"  (click)="search($event, i)" [className]="'page ' + (i + 1 === currentPage? 'selected-page': '')" >
+          {{i + 1}}
+        </li>
+      </ul>
+    </div>
+    <input type="search" [(ngModel)]="q" placeholder="Search..." (keyup)="search($event, 0)" >
+    <div class="main-container">
+      <div class="character-container" *ngFor="let character of characters">
+        <img [src]="character.image" [alt]="character.name" width="250" height="250">
+        <p class="text-success">{{character.name}}</p>
+        <p class="text-success">Status: {{character.status}}</p>
+        <p class="text-success">Species: {{character.species}}</p>
+      </div>
+    </div> 
+  </div>
+
+</body>
+</content>
+
